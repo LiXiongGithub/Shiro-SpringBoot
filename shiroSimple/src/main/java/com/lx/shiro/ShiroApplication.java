@@ -1,11 +1,12 @@
-package com.howie.shiro;
+package com.lx.shiro;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import tk.mybatis.spring.annotation.MapperScan;
+
 @SpringBootApplication
-@MapperScan(value = "com.howie.shiro.mapper")
+@MapperScan(value = "com.lx.shiro.mapper")
 public class ShiroApplication {
 
 	public static void main(String[] args) {

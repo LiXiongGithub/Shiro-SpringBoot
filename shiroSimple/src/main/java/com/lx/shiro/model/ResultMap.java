@@ -1,4 +1,4 @@
-package com.howie.shiro.model;
+package com.lx.shiro.model;
 
 import org.springframework.stereotype.Component;
 

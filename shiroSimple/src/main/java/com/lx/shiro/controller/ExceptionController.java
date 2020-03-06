@@ -1,11 +1,12 @@
-package com.howie.shiro.controller;
+package com.lx.shiro.controller;
 
-import com.howie.shiro.model.ResultMap;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.lx.shiro.model.ResultMap;
 
 /**
  * Created with IntelliJ IDEA

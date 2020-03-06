@@ -1,36 +1,32 @@
-package com.howie.shiro.controller;
+package com.lx.shiro.controller;
 
-import com.howie.shiro.model.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lx.shiro.model.ResultMap;
+
 /**
  * Created with IntelliJ IDEA
  *
  * @Author yuanhaoyue swithaoy@gmail.com
- * @Description 权限：游客
+ * @Description 权限：用户
  * @Date 2018-04-06
- * @Time 17:19
+ * @Time 20:33
  */
 @RestController
-@RequestMapping("/guest")
-public class GuestController {
+@RequestMapping("/user")
+public class UserController {
     private final ResultMap resultMap;
 
     @Autowired
-    public GuestController(ResultMap resultMap) {
+    public UserController(ResultMap resultMap) {
         this.resultMap = resultMap;
     }
 
-    @RequestMapping(value = "/enter", method = RequestMethod.GET)
-    public ResultMap login() {
-        return resultMap.success().message("欢迎进入，您的身份是游客");
-    }
-
     @RequestMapping(value = "/getMessage", method = RequestMethod.GET)
-    public ResultMap submitLogin() {
-        return resultMap.success().message("您拥有获得该接口的信息的权限！");
+    public ResultMap getMessage() {
+        return resultMap.success().message("您拥有用户权限，可以获得该接口的信息！");
     }
 }
