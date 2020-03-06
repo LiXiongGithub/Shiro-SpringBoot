@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lx.shiro.mapper.RolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.lx.shiro.pojo.RolePermission" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="rid" property="rid" jdbcType="BIGINT" />
+    <id column="pid" property="pid" jdbcType="BIGINT" />
+  </resultMap>
+</mapper>
