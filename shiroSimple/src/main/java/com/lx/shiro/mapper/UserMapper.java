@@ -7,4 +7,5 @@ import com.lx.shiro.util.MyMapper;
 
 public interface UserMapper extends MyMapper<User> {
 	Set<String> getRole (String userName);
+	Set<String> getPermission (String userName);
 }

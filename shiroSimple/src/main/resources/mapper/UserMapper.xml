@@ -10,11 +10,28 @@
 	</resultMap>
 
 
-	<select id="getRole" parameterType="java.lang.String"  resultType="java.lang.String">
+	<select id="getRole" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		/*根据用户id查询角色信息*/
 		SELECT c.name FROM `user` a
+		LEFT JOIN `user_role` b ON
+		a.`id` = b.`uid`
+		LEFT JOIN `role` c ON c.`id` = b.`rid`
+		WHERE a.`name` =
+		#{userName}
+
+	</select>
+
+	<select id="getPermission" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		/*根据用户id查询用户拥有的角色及角色所拥有的的权限*/
+		SELECT * FROM `user` a
 		LEFT JOIN `user_role` b ON a.`id` = b.`uid`
 		LEFT JOIN `role` c ON c.`id` = b.`rid`
+		LEFT JOIN `role_permission` d ON d.`rid` = c.`id`
+		LEFT JOIN `permission` f ON f.`id` = d.`pid`
 		WHERE a.`name` = #{userName}
 
 	</select>
+
 </mapper>
