@@ -1,16 +1,21 @@
 package com.lx.shiro.controller;
 
+import com.lx.shiro.bean.JWTAuthenticationToken;
 import com.lx.shiro.mapper.UserMapper;
 import com.lx.shiro.model.ResultMap;
+import com.lx.shiro.util.JWTUtil;
+import com.lx.shiro.util.LogVo;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +57,11 @@ public class LoginController {
 		return resultMap.success().message("成功注销！");
 	}
 
+	@RequestMapping(path = "/unauthorized/{message}")
+	public ResultMap unauthorized(@PathVariable String message) throws UnsupportedEncodingException {
+		return resultMap.success().code(401).message(message);
+	}
+
 	/**
 	 * 登陆
 	 *
@@ -64,15 +74,20 @@ public class LoginController {
 	public ResultMap login(String username, String password, String role) {
 		// 从SecurityUtils里边创建一个 subject
 		Subject subject = SecurityUtils.getSubject();
-		// 在认证提交前准备 token（令牌）
-		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-		// 校验用户名密码
-		subject.login(token);
-		// 根据权限，指定返回数据
+		LogVo logVo = new LogVo();
+		logVo.setPassWord(password);
+		logVo.setRole(role);
+		logVo.setToken("");
+		logVo.setUserName(username);
+
+		JWTAuthenticationToken jwt = new JWTAuthenticationToken();
+		jwt.setLogVo(logVo);
+		// 校验用户名密码,如果错误会抛出错误码
+		subject.login(jwt);
 
 		// 校验角色和权限
 		if (subject.hasRole(role)) {
-			return resultMap.success().message("登录成功");
+			return resultMap.success().message("登录成功：" + JWTUtil.createToken(username));
 		} else {
 			return resultMap.fail().message("权限错误！");
 		}

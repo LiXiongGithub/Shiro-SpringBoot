@@ -1,6 +1,5 @@
 package com.lx.shiro.controller;
 
-import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;

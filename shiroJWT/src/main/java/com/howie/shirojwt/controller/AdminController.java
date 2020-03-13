@@ -2,6 +2,9 @@ package com.howie.shirojwt.controller;
 
 import com.howie.shirojwt.mapper.UserMapper;
 import com.howie.shirojwt.model.ResultMap;
+
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,7 @@ public class AdminController {
 
     @GetMapping("/getUser")
     @RequiresRoles("admin")
+    @RequiresPermissions("adminPermission")
     public ResultMap getUser() {
         List<String> list = userMapper.getUser();
         return resultMap.success().code(200).message(list);

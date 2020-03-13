@@ -38,7 +38,8 @@ insert  into `permission`(`id`,`name`) values
 (7,'deleteOrder'),
 (8,'editOrder'),
 (9,'updateOrder'),
-(10,'listOrder');
+(10,'listOrder'),
+(11,'/user/getMessage');
 
 /*Table structure for table `role` */
 
@@ -80,6 +81,7 @@ insert  into `role_permission`(`rid`,`pid`) values
 (1,8),
 (1,9),
 (1,10),
+(1,11),
 (2,1),
 (2,2),
 (2,3),
@@ -126,6 +128,23 @@ insert  into `user_role`(`uid`,`rid`) values
 (1,3),
 (2,2),
 (2,3);
+
+/*Table structure for table `white_url` */
+
+DROP TABLE IF EXISTS `white_url`;
+
+CREATE TABLE `white_url` (
+  `id` int(11) NOT NULL,
+  `url` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `white_url` */
+
+insert  into `white_url`(`id`,`url`) values 
+(1,'/login'),
+(2,'/guest/enter'),
+(3,'/guest/getMessage');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

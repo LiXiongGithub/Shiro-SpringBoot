@@ -7,14 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lx.shiro.model.ResultMap;
 
-/**
- * Created with IntelliJ IDEA
- *
- * @Author yuanhaoyue swithaoy@gmail.com
- * @Description 权限：用户
- * @Date 2018-04-06
- * @Time 20:33
- */
+
 @RestController
 @RequestMapping("/user")
 public class UserController {

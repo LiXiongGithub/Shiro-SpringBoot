@@ -43,6 +43,9 @@ public class CustomRealm extends AuthorizingRealm {
 
     /**
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
+     * 
+     * subject.login(usernamePasswordToken);
+     * 时会调用该方法
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
@@ -66,6 +69,9 @@ public class CustomRealm extends AuthorizingRealm {
 
     /**
      * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
+     * 	subject.checkRole("admin");
+        subject.checkPermission("admin:select");
+       	鉴权方法时会调用
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

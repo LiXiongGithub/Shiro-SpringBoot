@@ -28,7 +28,7 @@ public class UserController {
     @Autowired
     public UserController(UserMapper userMapper, ResultMap resultMap) {
         this.userMapper = userMapper;
-        this.resultMap = resultMap;
+        this.resultMap = resultMap; 
     }
 
     /**
